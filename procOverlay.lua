@@ -1,7 +1,7 @@
 local f = CreateFrame("Frame")
 local _, playerGUID = UnitExists("player")
 
-print("procOverlay loaded")
+--print("procOverlay loaded")
 
 local Left = CreateFrame("Frame")
 Left:SetFrameStrata("HIGH")
