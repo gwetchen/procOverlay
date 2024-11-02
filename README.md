@@ -1,1 +1,1 @@
-Early version. Lots of hardcoded and messy stuff. Only on github because I get anxiety only storing locally. Do not use :)
+Early version. Positions are hardcoded, just chang the offset if you want to move them. Only on github because I get anxiety only storing locally. Do not use :)

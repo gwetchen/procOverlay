@@ -1,4 +1,5 @@
 local f = CreateFrame("Frame")
+local _, playerGUID = UnitExists("player")
 
 print("procOverlay loaded")
 
@@ -32,6 +33,17 @@ Top.texture:SetTexture("")
 Top.texture:SetAllPoints()
 Top:Hide()
 
+--[[local Barkskin = CreateFrame("Frame")
+Barkskin:SetFrameStrata("HIGH")
+Barkskin:SetWidth(32)
+Barkskin:SetHeight(32)
+Barkskin:SetPoint("CENTER",0,0)
+Barkskin.texture = Barkskin:CreateTexture(nil, "HIGH")
+Barkskin.texture:SetTexture("Interface\\Icons\\Spell_Nature_StoneClawTotem")
+Barkskin.texture:SetAllPoints()
+Barkskin.texture:SetTexCoord(.1,1,0,1)
+Barkskin:Show()]]--
+
 local function checkBuffByID(buffID)
     for i = 1,32 do
         local texture, stacks, id = UnitBuff("player", i)
@@ -51,6 +63,8 @@ local DruidBuffs = {
     [16870] = true, --Clearcasting
     [16886] = true, --Natrures's Grace
 }
+
+
 
 f:SetScript("OnEvent", function()
     if event == "PLAYER_AURAS_CHANGED" then
@@ -89,8 +103,11 @@ f:SetScript("OnEvent", function()
         end
     end
    if event == "UNIT_CASTEVENT" then
-        if arg1 == 0x000000000007FCAE then
-            print(arg4)
+        if arg1 == playerGUID then
+            if arg4 == 22812 then
+                cd1.texture:SetTexture("Interface\Icons\spell_nature_stoneclawtotem")
+                cd1:Show()
+            end
         end
     end]]--
     --[[if event == "UNIT_CASTEVENT" then
