@@ -52,6 +52,33 @@ local function checkBuffByID(buffID)
     return false
 end
 
+local spellsThatConsumeCC = { --only max ranks for now
+    [9907] = true,  --ff
+    [17389] = true, --ff(bear)
+    [17392] = true, --ff(kitty)
+    [9853] = true,  --entangling roots
+    [17402] = true, --hurricane
+    [24977] = true, --IS
+    [9835] = true,  --MF
+    [25298] = true, --SF
+    [45967] = true, --wrath
+    [8983] = true,  --bash
+    [31018] = true, --fb
+    [9881] = true,  --maul
+    [9827] = true,  --pounce
+    [9904] = true,  --rake
+    [9867] = true,  --ravage
+    [9896] = true,  --rip
+    [45736] = true, --savage bite
+    [9830] = true,  --shred
+    [9908] = true,  --swipe
+    [25297] = true, --healing touch
+    [20748] = true, --rebirth
+    [9858] = true,  --regrowth
+    [25299] = true, --rejuv
+    [9863] = true,  --tranq
+}
+
 f:RegisterEvent("CHAT_MSG_SPELL_PERIODIC_SELF_BUFFS") --"You gain X(1)."
 f:RegisterEvent("CHAT_MSG_SPELL_AURA_GONE_SELF") --"X fades from you."
 f:RegisterEvent("PLAYER_AURAS_CHANGED") --Called when a buff or debuff is either applied to a unit or is removed from the player.
@@ -62,10 +89,10 @@ local DruidBuffs = {
     [16886] = true, --Natrures's Grace
 }
 
-
+local clearCastTimer = 0
 
 f:SetScript("OnEvent", function()
-    if event == "PLAYER_AURAS_CHANGED" then
+    --[[if event == "PLAYER_AURAS_CHANGED" then
         local Clearcasting = checkBuffByID(16870)
         local NatruresGrace = checkBuffByID(16886)
         if Clearcasting == true then --NG: 16886
@@ -85,7 +112,7 @@ f:SetScript("OnEvent", function()
         if NatruresGrace == false then
             Top:Hide()
         end
-    end
+    end--]]
     if event == "UNIT_CASTEVENT" then
         if arg1 == playerGUID then
             if arg4 == 16870 then
@@ -93,11 +120,18 @@ f:SetScript("OnEvent", function()
                 Left:Show()
                 Right.texture:SetTexture("Interface\\AddOns\\procOverlay\\img\\OmenRight")
                 Right:Show()
-            else 
+                clearCastTimer = GetTime()
+            elseif spellsThatConsumeCC[arg4] then
                 Right:Hide()
                 Left:Hide()
             end           
         end
+    end
+    --local timeElapsed = GetTime() - clearCastTimer
+    --print(timeElapsed)
+    if GetTime() - clearCastTimer >= 15 then
+        Right:Hide()
+        Left:Hide()
     end
     --[[if event == "CHAT_MSG_SPELL_PERIODIC_SELF_BUFFS" then
         if string.find(arg1, "You gain Clearcasting") then
