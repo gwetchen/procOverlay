@@ -53,27 +53,28 @@ local function checkBuffByID(buffID)
 end
 
 local spellsThatConsumeCC = { --only max ranks for now
-    [9853] = true,  --entangling roots
-    [17402] = true, --hurricane
-    [24977] = true, --IS
-    [9835] = true,  --MF
-    [25298] = true, --SF
-    [45967] = true, --wrath
-    [8983] = true,  --bash
+    [9850] = true, --claw
+    [9830] = true,  --shred
     [31018] = true, --fb
     [9881] = true,  --maul
-    [9827] = true,  --pounce
     [9904] = true,  --rake
-    [9867] = true,  --ravage
     [9896] = true,  --rip
+    [9867] = true,  --ravage
     [45736] = true, --savage bite
-    [9830] = true,  --shred
-    [9908] = true,  --swipe
-    [25297] = true, --healing touch
+    [9827] = true,  --pounce
+    [8983] = true,  --bash
+    [45967] = true, --wrath
+    [25298] = true, --SF
+    [24977] = true, --IS
+    [9835] = true,  --MF
+    [17402] = true, --hurricane
     [20748] = true, --rebirth
     [9858] = true,  --regrowth
     [25299] = true, --rejuv
+    [25297] = true, --healing touch
     [9863] = true,  --tranq
+    [9908] = true,  --swipe 
+    [9853] = true,  --entangling roots
 }
 
 f:RegisterEvent("CHAT_MSG_SPELL_PERIODIC_SELF_BUFFS") --"You gain X(1)."
