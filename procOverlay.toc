@@ -1,1 +1,5 @@
+## Interface: 11200
+## Title: [SuperWoW] procOverlay |cff7fff7fSuper-WoW|r
+## OptionalDeps: SuperAPI
+
 procOverlay.lua
