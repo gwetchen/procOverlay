@@ -89,7 +89,7 @@ local DruidBuffs = {
 local clearCastTimer = 0
 
 f:SetScript("OnEvent", function()
-    --[[if event == "PLAYER_AURAS_CHANGED" then
+    if event == "PLAYER_AURAS_CHANGED" then
         local Clearcasting = checkBuffByID(16870)
         local NatruresGrace = checkBuffByID(16886)
         if Clearcasting == true then --NG: 16886
@@ -109,7 +109,7 @@ f:SetScript("OnEvent", function()
         if NatruresGrace == false then
             Top:Hide()
         end
-    end--]]
+    end
     if event == "UNIT_CASTEVENT" then
         if arg1 == playerGUID then
             if arg4 == 16870 then
