@@ -31,17 +31,6 @@ Top.texture:SetTexture("")
 Top.texture:SetAllPoints()
 Top:Hide()
 
---[[local Barkskin = CreateFrame("Frame")
-Barkskin:SetFrameStrata("HIGH")
-Barkskin:SetWidth(32)
-Barkskin:SetHeight(32)
-Barkskin:SetPoint("CENTER",0,0)
-Barkskin.texture = Barkskin:CreateTexture(nil, "HIGH")
-Barkskin.texture:SetTexture("Interface\\Icons\\Spell_Nature_StoneClawTotem")
-Barkskin.texture:SetAllPoints()
-Barkskin.texture:SetTexCoord(.1,1,0,1)
-Barkskin:Show()]]--
-
 local function checkBuffByID(buffID)
     for i = 1,32 do
         local texture, stacks, id = UnitBuff("player", i)
@@ -125,37 +114,8 @@ f:SetScript("OnEvent", function()
             end           
         end
     end
-    --local timeElapsed = GetTime() - clearCastTimer
-    --print(timeElapsed)
     if GetTime() - clearCastTimer >= 15 then
         Right:Hide()
         Left:Hide()
     end
-    --[[if event == "CHAT_MSG_SPELL_PERIODIC_SELF_BUFFS" then
-        if string.find(arg1, "You gain Clearcasting") then
-            Left.texture:SetTexture("Interface\\AddOns\\procOverlay\\img\\OmenLeft")
-            Left:Show()
-            Right.texture:SetTexture("Interface\\AddOns\\procOverlay\\img\\OmenRight")
-            Right:Show()
-        end
-    end
-    if event == "CHAT_MSG_SPELL_AURA_GONE_SELF" then
-        if string.find(arg1, "Clearcasting fades from you") then
-            Right:Hide()
-            Left:Hide()
-        end
-    end
-   if event == "UNIT_CASTEVENT" then
-        if arg1 == playerGUID then
-            if arg4 == 22812 then
-                cd1.texture:SetTexture("Interface\Icons\spell_nature_stoneclawtotem")
-                cd1:Show()
-            end
-        end
-    end]]--
-    --[[if event == "UNIT_CASTEVENT" then
-        if arg4 == 16870 then
-            f:Show()
-        end
-    end]]--
 end)
