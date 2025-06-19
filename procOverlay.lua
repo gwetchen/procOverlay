@@ -66,8 +66,8 @@ local spellsThatConsumeCC = { --only max ranks for now
     [9853] = true,  --entangling roots
 }
 
-f:RegisterEvent("CHAT_MSG_SPELL_PERIODIC_SELF_BUFFS") --"You gain X(1)."
-f:RegisterEvent("CHAT_MSG_SPELL_AURA_GONE_SELF") --"X fades from you."
+--f:RegisterEvent("CHAT_MSG_SPELL_PERIODIC_SELF_BUFFS") --"You gain X(1)."
+--f:RegisterEvent("CHAT_MSG_SPELL_AURA_GONE_SELF") --"X fades from you."
 f:RegisterEvent("PLAYER_AURAS_CHANGED") --Called when a buff or debuff is either applied to a unit or is removed from the player.
 f:RegisterEvent("UNIT_CASTEVENT") --superwow
 
