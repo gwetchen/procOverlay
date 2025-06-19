@@ -1,8 +1,6 @@
 local f = CreateFrame("Frame")
 local _, playerGUID = UnitExists("player")
 
---print("procOverlay loaded")
-
 local Left = CreateFrame("Frame")
 Left:SetFrameStrata("HIGH")
 Left:SetWidth(128)
@@ -67,7 +65,7 @@ local DruidBuffs = {
 
 
 f:SetScript("OnEvent", function()
-    if event == "PLAYER_AURAS_CHANGED" then
+    --[[if event == "PLAYER_AURAS_CHANGED" then
         local Clearcasting = checkBuffByID(16870)
         local NatruresGrace = checkBuffByID(16886)
         if Clearcasting == true then --NG: 16886
@@ -86,6 +84,19 @@ f:SetScript("OnEvent", function()
         end
         if NatruresGrace == false then
             Top:Hide()
+        end
+    end]]--
+    if event == "UNIT_CASTEVENT" then
+        if arg1 == playerGUID then
+            if arg4 == 16870 then
+                Left.texture:SetTexture("Interface\\AddOns\\procOverlay\\img\\OmenLeft")
+                Left:Show()
+                Right.texture:SetTexture("Interface\\AddOns\\procOverlay\\img\\OmenRight")
+                Right:Show()
+            else 
+                Right:Hide()
+                Left:Hide()
+            end           
         end
     end
     --[[if event == "CHAT_MSG_SPELL_PERIODIC_SELF_BUFFS" then
