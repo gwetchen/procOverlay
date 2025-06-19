@@ -53,9 +53,6 @@ local function checkBuffByID(buffID)
 end
 
 local spellsThatConsumeCC = { --only max ranks for now
-    [9907] = true,  --ff
-    [17389] = true, --ff(bear)
-    [17392] = true, --ff(kitty)
     [9853] = true,  --entangling roots
     [17402] = true, --hurricane
     [24977] = true, --IS
